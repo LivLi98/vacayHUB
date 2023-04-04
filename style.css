@@ -1,0 +1,109 @@
+body{
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+
+
+
+header {
+    background-color: rgb(67, 65, 65);
+    display: flex;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1.5%;
+    padding-bottom: 1%;
+
+    margin: 0;
+    justify-content: space-between
+}
+
+
+header > img {
+    width: 15%;
+    border-radius: 13px;
+    padding-bottom: 5;
+}
+
+label {
+    display: block;
+    font: 1rem 'Rubik', sans-serif;
+}
+
+input,
+label {
+    margin: 0.4rem 0;
+}
+
+.input-fields {
+   display: flex;
+   justify-content: center;
+   padding-top: 2%;
+   
+   }
+
+   #city-input {
+    margin-right: 4%;
+    margin-left: .5%;
+   }
+
+
+ #start {
+    margin-right: 4%;
+    margin-left: .5%;
+ }  
+
+ #end {
+    
+    margin-left: .5%;
+ }  
+
+ 
+
+ .changing-images > img{
+  margin-top: 1.5%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-left: 22%;
+  width: 55%;
+  position: absolute;
+  animation-name: imagefade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 16s;
+    
+ }
+  
+ @keyframes imagefade {
+    0% {
+      opacity:1;
+    }
+    17% {
+      opacity:1;
+    }
+    25% {
+      opacity:0;
+    }
+    92% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  .changing-images img:nth-of-type(1) {
+    animation-delay: 12s;
+  }
+  .changing-images img:nth-of-type(2) {
+    animation-delay: 8s;
+  }
+  .changing-images img:nth-of-type(3) {
+    animation-delay: 4s;
+  }
+  .changing-images img:nth-of-type(4) {
+    animation-delay: 0;
+  }
