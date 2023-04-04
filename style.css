@@ -43,6 +43,12 @@ label {
    
    }
 
+   #city-input {
+    margin-right: 4%;
+    margin-left: .5%;
+   }
+
+
  #start {
     margin-right: 4%;
     margin-left: .5%;
@@ -67,7 +73,7 @@ label {
   animation-name: imagefade;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-duration: 8s;
+  animation-duration: 16s;
     
  }
   
@@ -90,13 +96,13 @@ label {
   }
   
   .changing-images img:nth-of-type(1) {
-    animation-delay: 6s;
+    animation-delay: 12s;
   }
   .changing-images img:nth-of-type(2) {
-    animation-delay: 4s;
+    animation-delay: 8s;
   }
   .changing-images img:nth-of-type(3) {
-    animation-delay: 2s;
+    animation-delay: 4s;
   }
   .changing-images img:nth-of-type(4) {
     animation-delay: 0;
