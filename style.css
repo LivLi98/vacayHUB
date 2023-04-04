@@ -3,7 +3,10 @@ body{
     padding: 0px;
   }
 
-
+.api-data{
+  display: flex;
+  justify-content: space-around;
+}
 
 
 

@@ -8,8 +8,7 @@ let todaysDay=today.getDate();
 let todaysMonth=today.getMonth();
 let todaysYear=today.getFullYear();
 
-
-let withinFourteen=true;
+let vacationDayObjects=[];
 
 
 let cityInputElement=document.getElementById('city-input');
@@ -18,11 +17,55 @@ let endDateElement=document.getElementById('end');
 let submitButton=document.getElementById('submit-data');
 
 let vacationDataBox=document.querySelector('.api-data');
-let imageBox=document.querySelector('.changing-images')
+let imageBox=document.querySelector('.changing-images');
 
+
+let buildVacationDay=(dataSet)=>{
+    vacationDayObjects.push({
+        date: dataSet.forecast.forecastday[0].date.slice(5),
+        condition: dataSet.forecast.forecastday[0].day.condition.icon,
+        high: dataSet.forecast.forecastday[0].day.maxtemp_f,
+        low: dataSet.forecast.forecastday[0].day.mintemp_f
+    })
+}
+
+let buildHTML=(vacObj)=>{
+    console.log(vacObj.length)
+    vacObj.forEach(vac=>{
+        vacationDataBox.innerHTML+=`
+        <div>
+            <div>${vac.date}</div>
+            <img src="${vac.condition}">
+            <div>H: ${Math.floor(vac.high)}\xB0F</div>
+            <div>L: ${Math.floor(vac.low)}\xB0F</div>
+        </div>`
+    })
+}
+
+let fetchDays=(vacDay)=>{
+    //getting data within 14 days
+    if(vacDay<16){
+        fetch(`${url}/forecast.json${apiKey}${cityValue}&dt=${startDateFormat}`)
+        .then(response=>response.ok?response.json():null)
+        .then(data=>{
+            buildVacationDay(data);
+        })
+    }else{
+        fetch(`${url}/future.json${apiKey}${cityValue}&dt=${startDateFormat}`)
+        .then(response=>response.ok?response.json():null)
+        .then(data=>{
+            buildVacationDay(data);
+        })
+    }
+}
+
+let buildSite=async()=>{
+    let dayObject=await fetchDays();
+}
 
 submitButton.addEventListener('click',(e)=>{
 
+    vacationDayObjects=[];
     vacationDataBox.innerHTML=''
     
     let cityValue=cityInputElement.value;
@@ -34,15 +77,13 @@ submitButton.addEventListener('click',(e)=>{
 
     eDate.setDate(eDate.getDate()+1);
 
-    let difference=eDate.getTime()-sDate.getTime();
     let daysBetween=(start,end)=>Math.ceil((end.getTime()-start.getTime())/(1000*3600*24));
 
     let numVacationDays=daysBetween(sDate,eDate);
 
     if(numVacationDays>0){
-
         imageBox.style.display='none';
-        for(let x=0;x<numVacationDays;x++){
+        for(let x=0;x<(numVacationDays);x++){
 
             sDate.setDate(sDate.getDate()+1);
 
@@ -50,29 +91,13 @@ submitButton.addEventListener('click',(e)=>{
 
             let fromToday=daysBetween(today,sDate)
 
-            //getting data within 14 days
-            if(fromToday<16){
-                fetch(`${url}/forecast.json${apiKey}${cityValue}&dt=${startDateFormat}`)
-                .then(response=>response.ok?response.json():null)
-                .then(data=>{
-                    vacationDataBox.innerHTML+=`
-                    <div>
-                        <div>${data.forecast.forecastday[0].date}</div>
-                        <div>${data.forecast.forecastday[0].day.maxtemp_f}</div>
-                    </div>`
-                })
-            }else{
-                fetch(`${url}/future.json${apiKey}${cityValue}&dt=${startDateFormat}`)
-                .then(response=>response.ok?response.json():null)
-                .then(data=>{
-                    vacationDataBox.innerHTML+=`
-                    <div>
-                        <div>${data.forecast.forecastday[0].date}</div>
-                        <div>${data.forecast.forecastday[0].day.maxtemp_f}</div>
-                    </div>`
-                })
-            }
+            
         }
     }else(vacationDataBox.innerHTML='Invalid Dates');
-    
+    console.log(vacationDayObjects)
+    console.log(vacationDayObjects)
+    buildHTML(vacationDayObjects)
 })
+
+let arr=[1,2]
+console.log(arr.length)
