@@ -18,33 +18,61 @@ let endDateElement=document.getElementById('end');
 let submitButton=document.getElementById('submit-data');
 
 let vacationDataBox=document.querySelector('.api-data');
-
+let imageBox=document.querySelector('.changing-images')
 
 
 submitButton.addEventListener('click',(e)=>{
-    console.log(cityInputElement.value)
+
+    vacationDataBox.innerHTML=''
     
     let cityValue=cityInputElement.value;
     let startDate=startDateElement.value;
     let endDate=endDateElement.value;
 
     let sDate=new Date(startDate);
-    let currentDate;
     let eDate=new Date(endDate);
 
+    eDate.setDate(eDate.getDate()+1);
+
     let difference=eDate.getTime()-sDate.getTime();
-    let daysBetween=Math.ceil(difference/(1000*3600*24));
-    console.log(daysBetween);
+    let daysBetween=(start,end)=>Math.ceil((end.getTime()-start.getTime())/(1000*3600*24));
 
+    let numVacationDays=daysBetween(sDate,eDate);
 
-    //getting data within 14 days
-    fetch(`${url}/forecast.json${apiKey}${cityValue}&dt=${startDate}`)
-        .then(response=>response.ok?response.json():null)
-        .then(data=>{
-            vacationDataBox.innerHTML=`
-            <div>${data.forecast.forecastday[0].date}</div>
-            <div>${data.forecast.forecastday[0].day.maxtemp_f}</div>`
-        })
-    
+    if(numVacationDays>0){
+
+        imageBox.style.display='none';
+        for(let x=0;x<numVacationDays;x++){
+
+            sDate.setDate(sDate.getDate()+1);
+
+            let startDateFormat=`${sDate.getFullYear()}-${(sDate.getMonth()+1)<10?`0${sDate.getMonth()+1}`:sDate.getMonth()+1}-${sDate.getDate()<10?`0${sDate.getDate()}`:sDate.getDate()}`
+
+            let fromToday=daysBetween(today,sDate)
+
+            //getting data within 14 days
+            if(fromToday<16){
+                fetch(`${url}/forecast.json${apiKey}${cityValue}&dt=${startDateFormat}`)
+                .then(response=>response.ok?response.json():null)
+                .then(data=>{
+                    vacationDataBox.innerHTML+=`
+                    <div>
+                        <div>${data.forecast.forecastday[0].date}</div>
+                        <div>${data.forecast.forecastday[0].day.maxtemp_f}</div>
+                    </div>`
+                })
+            }else{
+                fetch(`${url}/future.json${apiKey}${cityValue}&dt=${startDateFormat}`)
+                .then(response=>response.ok?response.json():null)
+                .then(data=>{
+                    vacationDataBox.innerHTML+=`
+                    <div>
+                        <div>${data.forecast.forecastday[0].date}</div>
+                        <div>${data.forecast.forecastday[0].day.maxtemp_f}</div>
+                    </div>`
+                })
+            }
+        }
+    }else(vacationDataBox.innerHTML='Invalid Dates');
     
 })
