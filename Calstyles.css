@@ -1,1 +1,35 @@
-bo
+#head-container{
+    background-color: rgb(67, 65, 65)
+
+}
+
+img{
+    width: 15%;
+    border-radius: 13px;
+    padding-bottom: 5;
+}
+
+.calendar{
+    width: 1000px;
+  
+
+
+}
+.calendar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  padding: 45px 40px 10px;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 35px;
+    margin-right:35px ;
+}
+
+.calendar-days{
+    display: flex;
+    justify-content: space-between;
+}
