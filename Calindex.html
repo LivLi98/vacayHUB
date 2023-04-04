@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="Calstyles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Calendar</title>
 </head>
 <body>
@@ -11,22 +13,39 @@
         <div id="logo">CALENDER LOGO AND IMAGE
         </div>
     </div>
-<div class="Calendar">
-    <div class="calendar-header">
-        <h2 class="month-picker" id=""></h2>
+    <div class="calendar">
+        <div style="border:1px solid black" class="calendar-header">
+            <button id="prevMonth" type="button">Prev</button> 
+            <span class="month-picker" id="month-picker">April</span>
+            <button id="nextMonth" type="button">Next</button> 
+            <div class="year-picker">
+                    <pre></pre>
+                </span>
+                <span class="year-change" id="next-year">
+                <button id="prevYear" type="button">Prev</button> 
+                <span id="year">2022</span>
+                    <button id="nextYear" type="button">Next</button> 
+                    <pre></pre>
+                </span>
+            </div>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-week-day">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-days"></div>
 
-
-
-
-
-
-
-
-
-
+        </div>
+       
+        <div class="month-list"></div>
     </div>
 
-</div>
-    
+<script src="Calscript.js"></script>
 </body>
 </html>
