@@ -1,4 +1,8 @@
 
+ 
+
+let eventContainer = document.getElementsByClassName(".api-data");
+			                
 let url = 'http://api.weatherapi.com/v1';
 let apiKey ='?key=c021b43ef7ef412eac6134345233003&q=';
 
@@ -151,4 +155,3 @@ submitButton.addEventListener('click',(e)=>{
     buildDayInfo(cityValue,sDate,eDate);
     
 })
-
