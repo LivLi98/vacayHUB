@@ -13,8 +13,6 @@ let dayObjectsJSON=localStorage.getItem('vacationDayObjectsJ');
 let vacationDayObjects=JSON.parse(dayObjectsJSON);
 vacationDayObjects?null:vacationDayObjects=[];
 
-
-
 let cityInputElement=document.getElementById('city-input');
 let startDateElement=document.getElementById('start');
 let endDateElement=document.getElementById('end');
@@ -30,6 +28,7 @@ const options = {
 		'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
 	}
 }
+
 
 let buildVacationDay=async(dataSet)=>{
    return{
@@ -86,6 +85,7 @@ let fetchDays=async(cName,sD)=>{
     })    
 }
 
+
 let fetchEvents=async(numdays,cityname)=>{
     return new Promise(resolve=>{
         fetch(`https://ai-trip-planner.p.rapidapi.com/?days=${numdays}&destination=${cityname}`, options)
@@ -137,7 +137,7 @@ submitButton.addEventListener('click',(e)=>{
     imageBox.style.display='none';
 
     vacationDayObjects=[];
-    vacationDataBox.innerHTML=''
+    vacationDataBox.innerHTML='';
     
     let cityValue=cityInputElement.value;
     let startDate=startDateElement.value;
