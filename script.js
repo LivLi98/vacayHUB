@@ -87,19 +87,17 @@ let fetchDays=async(cName,sD)=>{
 }
 
 let fetchEvents=async(numdays,cityname)=>{
-    fetch(`https://ai-trip-planner.p.rapidapi.com/?days=${numdays}&destination=${cityname}`, options)
-	.then(response => response.json())
-	.then(response =>{
-        console.log(response)
-        let counter=0;
-        response.plan.forEach(pl=>{
-            vacationDayObjects[counter].toDo.push(pl.activities);
-            console.log(pl.activities)
-            console.log(vacationDayObjects[counter], 'counter test')
-            counter++;
-            
-        })       
-    }).catch(err => console.error(err));
+    return new Promise(resolve=>{
+        fetch(`https://ai-trip-planner.p.rapidapi.com/?days=${numdays}&destination=${cityname}`, options)
+        .then(response => response.json())
+        .then(response =>{
+            let dayArray=[];
+            response.plan.forEach(pl=>{
+                dayArray.push(pl.activities);         
+            })
+            resolve(dayArray);       
+        }).catch(err => console.error(err));
+    })
 }
 
 
@@ -116,11 +114,15 @@ let buildDayInfo=async(cName,sD,eD)=>{
         }
     }else{vacationDataBox.innerHTML='Invalid Dates'}
 
-    await fetchEvents(numVacationDays,cName);
+    let getEventsList= await fetchEvents(numVacationDays,cName);
+
+    for(let x=0;x<numVacationDays;x++){
+        vacationDayObjects[x].toDo=getEventsList[x];
+    }
 
     buildHTML(vacationDayObjects,7);
 
-    console.log(vacationDayObjects);
+    console.log(vacationDayObjects, 'vacation day built');
 
     dayObjectsJSON= JSON.stringify(vacationDayObjects);
 
