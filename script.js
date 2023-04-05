@@ -2,6 +2,7 @@
 let url = 'http://api.weatherapi.com/v1';
 let apiKey ='?key=c021b43ef7ef412eac6134345233003&q=';
 
+let numVacationDays=0;
 
 let today = new Date();
 let todaysDay=today.getDate();
@@ -13,6 +14,7 @@ let vacationDayObjects=JSON.parse(dayObjectsJSON);
 vacationDayObjects?null:vacationDayObjects=[];
 
 
+
 let cityInputElement=document.getElementById('city-input');
 let startDateElement=document.getElementById('start');
 let endDateElement=document.getElementById('end');
@@ -21,14 +23,21 @@ let submitButton=document.getElementById('submit-data');
 let vacationDataBox=document.querySelector('.api-data');
 let imageBox=document.querySelector('.changing-images');
 
-
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '877a5a72fcmsh2a871114e09a22ep1a5bf4jsnff157ccbd13b',
+		'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
+	}
+}
 
 let buildVacationDay=async(dataSet)=>{
-    return{
+   return{
         date: dataSet.forecast.forecastday[0].date.slice(5),
         condition: dataSet.forecast.forecastday[0].day.condition.icon,
         high: dataSet.forecast.forecastday[0].day.maxtemp_f,
-        low: dataSet.forecast.forecastday[0].day.mintemp_f
+        low: dataSet.forecast.forecastday[0].day.mintemp_f,
+        toDo: []
     }
 }
 
@@ -57,7 +66,7 @@ let daysBetween=(start,end)=>Math.ceil((end.getTime()-start.getTime())/(1000*360
 let fetchDays=async(cName,sD)=>{
     return new Promise(resolve=>{
 
-        let fromToday=daysBetween(today,sD)
+        let fromToday=daysBetween(today,sD);
 
         let startDateFormat=`${sD.getFullYear()}-${(sD.getMonth()+1)<10?`0${sD.getMonth()+1}`:sD.getMonth()+1}-${sD.getDate()<10?`0${sD.getDate()}`:sD.getDate()}`
         
@@ -77,24 +86,48 @@ let fetchDays=async(cName,sD)=>{
     })    
 }
 
+let fetchEvents=async(numdays,cityname)=>{
+    return new Promise(resolve=>{
+        fetch(`https://ai-trip-planner.p.rapidapi.com/?days=${numdays}&destination=${cityname}`, options)
+        .then(response => response.json())
+        .then(response =>{
+            let dayArray=[];
+            response.plan.forEach(pl=>{
+                dayArray.push(pl.activities);         
+            })
+            resolve(dayArray);       
+        }).catch(err => console.error(err));
+    })
+}
+
 
 let buildDayInfo=async(cName,sD,eD)=>{
-    
-    let numVacationDays=daysBetween(sD,eD);
+
+    numVacationDays=daysBetween(sD,eD);
 
     if(numVacationDays>0){
         for(let x=0;x<numVacationDays;x++){
             sD.setDate(sD.getDate()+1);
             let fetcher=await fetchDays(cName,sD);
-            console.log(fetcher)
-            vacationDayObjects.push(fetcher)
+            console.log(fetcher);
+            vacationDayObjects.push(fetcher);
         }
     }else{vacationDataBox.innerHTML='Invalid Dates'}
 
-    console.log(vacationDayObjects)
+    let getEventsList= await fetchEvents(numVacationDays,cName);
+
+    for(let x=0;x<numVacationDays;x++){
+        vacationDayObjects[x].toDo=getEventsList[x];
+    }
+
     buildHTML(vacationDayObjects,7);
-    dayObjectsJSON=JSON.stringify(vacationDayObjects);
-    console.log(dayObjectsJSON);
+
+    console.log(vacationDayObjects, 'vacation day built');
+
+    dayObjectsJSON= JSON.stringify(vacationDayObjects);
+
+    console.log(dayObjectsJSON, 'json');
+
     localStorage.setItem('vacationDayObjectsJ',dayObjectsJSON);
 }
 
@@ -118,3 +151,4 @@ submitButton.addEventListener('click',(e)=>{
     buildDayInfo(cityValue,sDate,eDate);
     
 })
+
