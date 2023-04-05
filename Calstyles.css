@@ -1,0 +1,62 @@
+#head-container{
+    background-color: rgb(67, 65, 65)
+}
+
+img{
+    width: 15%;
+    border-radius: 13px;
+    padding-bottom: 5;
+}
+
+button{
+    height: 40px;
+    background: orange;
+    margin: 0 5px;
+    border-radius: 90px;
+    line-height: px;
+}
+
+button :hover{
+    background: rgb(67, 65, 6)
+    
+}
+.calendar{
+    margin-top: 35px;
+      width: 950px; 
+      border-radius: 10px;
+      padding: 20px;
+      margin-left: 290px;      
+}
+
+.calendar-days ul {  
+flex-wrap: wrap;
+display: flex;
+list-style: none 
+}
+
+.calendar header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+    padding: 25px 50px 10px;
+}
+.current-date{
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 500;
+}
+.calendar .days{
+margin-bottom: 25px;
+}
+.calendar .days li{
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+.calendar .weeks li {
+font-weight: 500;
+}
+
+.calendar ul li{
+    width: calc(100% / 7);
+}
