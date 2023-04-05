@@ -1,31 +1,23 @@
 
 
-let eventContainer = document.getElementsByClassName(".api-data");
+// function displayEvents(type) {
+// 		drinksContainer.innerHTML = ''
+// 		fetch(`https://serpapi.com/search.json?engine=google_events&q=Events+in+${city}&hl=en&gl=us`)
+// 		.then((response) => response.json())
+// 		.then((data) => {
+// 			data.forEach((drink) => {
+// 				drinksContainer.insertAdjacentHTML(
+// 					"beforeend",
+// 					`
+// 					<article class="drink">
+// 						<h3 id="drink-name">${drink.title}</h3>
+// 						<img src="${drink.image}" alt="" height="250px" width="250px">
+// 						<p id="drink-description">${drink.description}</p>
+// 						<button>Try It</button>
+// 					</article>
+// 					`
+// 				);
+// 			});
+// 		})
+// 	}
 
-function displayEvents(type) {
-    eventContainer.innerHTML = ''
-    fetch('https://outsida.p.rapidapi.com/api/v1/events/%7Bid%7D')
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach((city) => {
-            eventContainer.innerHTML(
-                
-                `
-				<div class="api-data">$</div> 
-                `
-            );
-        });
-    })
-
- 
-    .then(() => {
-		let clickCity = document.getElementsByClassName('.submit-button');
-		clickCity.forEach(clickCity => {
-			clickCity.addEventListener('click', (event) => {
-				 
-				displayEvents(); 
-			
-			})
-        })
-    });
-}
