@@ -1,8 +1,8 @@
-const axios = require("axios");
 
 let url = 'http://api.weatherapi.com/v1';
 let apiKey ='?key=c021b43ef7ef412eac6134345233003&q=';
 
+let numVacationDays=0;
 
 let today = new Date();
 let todaysDay=today.getDate();
@@ -14,6 +14,7 @@ let vacationDayObjects=JSON.parse(dayObjectsJSON);
 vacationDayObjects?null:vacationDayObjects=[];
 
 
+
 let cityInputElement=document.getElementById('city-input');
 let startDateElement=document.getElementById('start');
 let endDateElement=document.getElementById('end');
@@ -22,14 +23,21 @@ let submitButton=document.getElementById('submit-data');
 let vacationDataBox=document.querySelector('.api-data');
 let imageBox=document.querySelector('.changing-images');
 
-
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '877a5a72fcmsh2a871114e09a22ep1a5bf4jsnff157ccbd13b',
+		'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
+	}
+}
 
 let buildVacationDay=async(dataSet)=>{
-    return{
+   return{
         date: dataSet.forecast.forecastday[0].date.slice(5),
         condition: dataSet.forecast.forecastday[0].day.condition.icon,
         high: dataSet.forecast.forecastday[0].day.maxtemp_f,
-        low: dataSet.forecast.forecastday[0].day.mintemp_f
+        low: dataSet.forecast.forecastday[0].day.mintemp_f,
+        toDo: []
     }
 }
 
@@ -78,10 +86,26 @@ let fetchDays=async(cName,sD)=>{
     })    
 }
 
+let fetchEvents=async(numdays,cityname)=>{
+    fetch(`https://ai-trip-planner.p.rapidapi.com/?days=${numdays}&destination=${cityname}`, options)
+	.then(response => response.json())
+	.then(response =>{
+        console.log(response)
+        let counter=0;
+        response.plan.forEach(pl=>{
+            vacationDayObjects[counter].toDo.push(pl.activities);
+            console.log(pl.activities)
+            console.log(vacationDayObjects[counter], 'counter test')
+            counter++;
+            
+        })       
+    }).catch(err => console.error(err));
+}
+
 
 let buildDayInfo=async(cName,sD,eD)=>{
-    
-    let numVacationDays=daysBetween(sD,eD);
+
+    numVacationDays=daysBetween(sD,eD);
 
     if(numVacationDays>0){
         for(let x=0;x<numVacationDays;x++){
@@ -92,10 +116,16 @@ let buildDayInfo=async(cName,sD,eD)=>{
         }
     }else{vacationDataBox.innerHTML='Invalid Dates'}
 
-    console.log(vacationDayObjects);
+    await fetchEvents(numVacationDays,cName);
+
     buildHTML(vacationDayObjects,7);
-    dayObjectsJSON=JSON.stringify(vacationDayObjects);
-    console.log(dayObjectsJSON);
+
+    console.log(vacationDayObjects);
+
+    dayObjectsJSON= JSON.stringify(vacationDayObjects);
+
+    console.log(dayObjectsJSON, 'json');
+
     localStorage.setItem('vacationDayObjectsJ',dayObjectsJSON);
 }
 
@@ -120,19 +150,3 @@ submitButton.addEventListener('click',(e)=>{
     
 })
 
-
-const options = {
-    method: 'GET',
-    url: 'https://ai-trip-planner.p.rapidapi.com/',
-    params: {days: '3', destination: 'London,UK'},
-    headers: {
-      'X-RapidAPI-Key': '877a5a72fcmsh2a871114e09a22ep1a5bf4jsnff157ccbd13b',
-      'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
-    }
-  };
-  
-  axios.request(options).then(function (response) {
-      console.log(response.data);
-  }).catch(function (error) {
-      console.error(error);
-  });
