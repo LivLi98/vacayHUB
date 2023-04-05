@@ -1,0 +1,45 @@
+body {
+
+    font-family: 'Rubik', sans-serif;
+    
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+header {
+    background-color: rgb(67, 65, 65);
+    display: flex;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1.5%;
+    padding-bottom: 1%;
+
+    margin: 0;
+    
+}
+
+header > img {
+    width: 15%;
+    border-radius: 13px;
+    padding-bottom: 5;
+}
+
+.team-info {
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15%;
+
+}
+
+.team-info > img {
+    width: 12%;
+    margin-top: 5%;
+}
