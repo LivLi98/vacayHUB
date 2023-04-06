@@ -22,6 +22,9 @@ let startDateElement=document.getElementById('start');
 let endDateElement=document.getElementById('end');
 let submitButton=document.getElementById('submit-data');
 
+let tripWeather=document.createElement('div');
+let tripSug=document.createElement('div');
+
 let vacationDataBox=document.querySelector('.api-data');
 let imageBox=document.querySelector('.changing-images');
 
@@ -48,15 +51,27 @@ let buildVacationDay=async(dataSet)=>{
 let buildHTML=(vacObj,num)=>{
     let count=num;
     vacationDataBox.innerHTML='';
+    vacationDataBox.appendChild(tripWeather);
+    vacationDataBox.appendChild(tripSug);
+    tripWeather.setAttribute('class', 'weather-box')
+    tripSug.setAttribute('class', 'event-box');
     vacObj.forEach(vac=>{
         if(count>0){
-            vacationDataBox.innerHTML+=`
+            tripWeather.innerHTML+=`
             <div>
                 <div>${vac.date}</div>
                 <img src="${vac.condition}">
                 <div>H: ${Math.floor(vac.high)}\xB0F</div>
                 <div>L: ${Math.floor(vac.low)}\xB0F</div>
-            </div>`
+            </div>`;
+            vac.toDo.forEach(activity=>{
+                tripSug.innerHTML+=`
+                <div class='event-item'>
+                    <div class='event-day'>${vac.date}</div>
+                    <div class='event-time'>${activity.time}</div>
+                    <div class='event-desc'>${activity.description}</div>
+                </div>`;
+            })
         }
         count--;
     })
