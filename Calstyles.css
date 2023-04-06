@@ -4,28 +4,44 @@ grid-template-rows:    repeat(5, 100px);
 grid-template-columns: repeat(7, 1fr);
 gap: 50px 100px;
 }
-<<<<<<< HEAD
-
-#style="border:1px solid black"
-body > #head-container > .logo > img {
-
-    width: 15%;
-}
-
-body {
-    margin: 0px;
-    padding: 0px;
-}
-#ad-container{
-    display: flex;
-}
-
-=======
 .vac-info{
     color: rgb(217, 137, 17);
 }
+body > #head-container > .logo > .anchor > img {
+
+    width: 15%;
+}
+body > #head-container {
+    background-color: rgb(67, 65, 65)
+}
+
+.calendar{
+    margin-left: 34px;
+    margin-right: 40px;
+    margin-top: 40px;
+}
+
+.days{
+    margin-left: 50px;
+    margin-top: 40px;
+   
+}
+
+.day{
+    background-color: rgb(109, 109, 109);
+    margin: ;
+}
+
+.btn{
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+#appendData{
+    background-color:rgb(217, 137, 17) ;
+    width: 15%;
+}
 /* 
->>>>>>> upstream/main
 #head-container{
     background-color: rgb(67, 65, 65)
 }
