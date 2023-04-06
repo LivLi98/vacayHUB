@@ -1,21 +1,15 @@
-let today = new Date();
-let currentMonth = today.getMonth();
-let currentYear = today.getFullYear();
-let selectYear = document.getElementById("year");
-let selectMonth = document.getElementById("month");
 
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+console.log('uhhh');
 
-let monthAndYear = document.getElementById("monthAndYear");
-showCalendar(currentMonth, currentYear);
+let dayBox=document.querySelector('.days');
 
+let mDays=31;
 
-function next() {
-    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
-    currentMonth = (currentMonth + 1) % 12;
-    showCalendar(currentMonth, currentYear);
+for(x=1;x<=mDays;x++){
+    dayBox.innerHTML+=`<div class="day">${x}</div>`
 }
 
+<<<<<<< HEAD
 function previous() {
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
@@ -105,3 +99,5 @@ function showCalendar(month, year) {
 
 
 
+=======
+>>>>>>> upstream/main
