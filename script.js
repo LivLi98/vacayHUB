@@ -1,61 +1,7 @@
 
-
-<<<<<<< HEAD
  
 
 let eventContainer = document.getElementsByClassName(".api-data");
-
-function displayEvents(type) {
-    eventContainer.innerHTML = ''
-    fetch('https://outsida.p.rapidapi.com/api/v1/events/%7Bid%7D')
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach((city) => {
-            eventContainer.innerHTML(
-                
-                `
-				<div class="api-data">$</div> 
-                `
-            );
-        });
-    })
-
- 
-    .then(() => {
-		let clickCity = document.getElementsByClassName('.submit-button');
-		clickCity.forEach(clickCity => {
-			clickCity.addEventListener('click', (event) => {
-				 
-				displayEvents(); 
-			
-			})
-        })
-    });
-}
-
-
-
-
-
-// // This is from the API source
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': 'a3b73e3d83msh053eec02e0fdf9fp1395d6jsn16d5961429dd',
-// 		'X-RapidAPI-Host': 'outsida.p.rapidapi.com'
-// 	}
-// };
-
-
-
-
-
-
-// let clickCity = document.getElementsByClassName('.input-fields > city-label');
-// clickCity.forEach(clickCity => {
-// 	clickCity.addEventListener('click', (event) => {
-         
-// 		displayEvents()
 			                
 let url = 'http://api.weatherapi.com/v1';
 let apiKey ='?key=c021b43ef7ef412eac6134345233003&q=';
@@ -70,8 +16,6 @@ let todaysYear=today.getFullYear();
 let dayObjectsJSON=localStorage.getItem('vacationDayObjectsJ');
 let vacationDayObjects=JSON.parse(dayObjectsJSON);
 vacationDayObjects?null:vacationDayObjects=[];
-
-
 
 let cityInputElement=document.getElementById('city-input');
 let startDateElement=document.getElementById('start');
@@ -88,6 +32,7 @@ const options = {
 		'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
 	}
 }
+
 
 let buildVacationDay=async(dataSet)=>{
    return{
@@ -144,6 +89,7 @@ let fetchDays=async(cName,sD)=>{
     })    
 }
 
+
 let fetchEvents=async(numdays,cityname)=>{
     return new Promise(resolve=>{
         fetch(`https://ai-trip-planner.p.rapidapi.com/?days=${numdays}&destination=${cityname}`, options)
@@ -195,7 +141,7 @@ submitButton.addEventListener('click',(e)=>{
     imageBox.style.display='none';
 
     vacationDayObjects=[];
-    vacationDataBox.innerHTML=''
+    vacationDataBox.innerHTML='';
     
     let cityValue=cityInputElement.value;
     let startDate=startDateElement.value;
@@ -209,87 +155,3 @@ submitButton.addEventListener('click',(e)=>{
     buildDayInfo(cityValue,sDate,eDate);
     
 })
-
-<<<<<<< HEAD
-
- 
-
-let eventContainer = document.getElementsByClassName(".api-data");
-
-function displayEvents(type) {
-    eventContainer.innerHTML = ''
-    fetch('https://outsida.p.rapidapi.com/api/v1/events/%7Bid%7D')
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach((city) => {
-            eventContainer.innerHTML(
-                
-                `
-				<div class="api-data">$</div> 
-                `
-            );
-        });
-    })
-
- 
-    .then(() => {
-		let clickCity = document.getElementsByClassName('.submit-button');
-		clickCity.forEach(clickCity => {
-			clickCity.addEventListener('click', (event) => {
-				 
-				displayEvents(); 
-			
-			})
-        })
-    });
-}
-
-
-
-
-
-// This is from the API source
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'a3b73e3d83msh053eec02e0fdf9fp1395d6jsn16d5961429dd',
-		'X-RapidAPI-Host': 'outsida.p.rapidapi.com'
-	}
-};
-
-
-
-
-
-
-// let clickCity = document.getElementsByClassName('.input-fields > city-label');
-// clickCity.forEach(clickCity => {
-// 	clickCity.addEventListener('click', (event) => {
-         
-// 		displayEvents()
-			                
-=======
-// function displayEvents(type) {
-// 		drinksContainer.innerHTML = ''
-// 		fetch(`https://serpapi.com/search.json?engine=google_events&q=Events+in+${city}&hl=en&gl=us`)
-// 		.then((response) => response.json())
-// 		.then((data) => {
-// 			data.forEach((drink) => {
-// 				drinksContainer.insertAdjacentHTML(
-// 					"beforeend",
-// 					`
-// 					<article class="drink">
-// 						<h3 id="drink-name">${drink.title}</h3>
-// 						<img src="${drink.image}" alt="" height="250px" width="250px">
-// 						<p id="drink-description">${drink.description}</p>
-// 						<button>Try It</button>
-// 					</article>
-// 					`
-// 				);
-// 			});
-// 		})
-// 	}
-
->>>>>>> js
-=======
->>>>>>> upstream/main
