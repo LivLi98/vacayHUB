@@ -7,6 +7,42 @@ gap: 50px 100px;
 .vac-info{
     color: rgb(217, 137, 17);
 }
+body > #head-container > .logo > .anchor > img {
+
+    width: 15%;
+}
+body > #head-container {
+    background-color: rgb(67, 65, 65)
+}
+
+.calendar{
+    margin-left: 34px;
+    margin-right: 40px;
+    margin-top: 40px;
+}
+
+.days{
+    margin-left: 50px;
+    margin-top: 40px;
+   
+}
+
+.day{
+    background-color: rgb(231, 231, 231);
+    margin-bottom: 20px;
+    margin
+
+}
+
+.btn{
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+#appendData{
+    background-color:rgb(217, 137, 17) ;
+    width: 15%;
+}
 /* 
 #head-container{
     background-color: rgb(67, 65, 65)
@@ -16,7 +52,7 @@ img{
     width: 15%;
     border-radius: 13px;
     padding-bottom: 5;
-}
+} 
 
 button{
     height: 40px;
@@ -35,7 +71,9 @@ button :hover{
       width: 950px; 
       border-radius: 10px;
       padding: 20px;
-      margin-left: 290px;      
+
+
+      margin-left: 490px;      
 }
 
 .calendar-days ul {  
@@ -69,4 +107,6 @@ font-weight: 500;
 
 .calendar ul li{
     width: calc(100% / 7);
-} */ 
+}
+
+
