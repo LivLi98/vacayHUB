@@ -35,15 +35,15 @@ function showCalendar(month, year) {
 
     let tbl = document.getElementById("calendar-body"); // body of the calendar
 
-    clearing all previous cells
+    // clearing all previous cells
     tbl.innerHTML = "";
 
-    filing data about month and in the page via DOM.
+    // filing data about month and in the page via DOM.
     monthAndYear.innerHTML = months[month] + " " + year;
     selectYear.value = year;
     selectMonth.value = month;
 
-    creating all cells
+    // creating all cells
     let date = 1;
     for (let i = 0; i < 6; i++) {
         // creates a table row

@@ -16,10 +16,31 @@
     </div>   
     <div style="border:7px solid orange" class="calendar">
         <header>
+          <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+            <h3 class="card-header" id="monthAndYear"></h3>
+            <table class="table table-bordered table-responsive-sm" id="calendar">
+                
+    
+                <tbody id="calendar-body">
+    
+                </tbody>
+            </table>
+    
+            <div class="form-inline">
+    
+                <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">&lt;&lt; Previous</button>
+    
+                <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next&gt;&gt;</button>
+            </div>
+            <br/>
+    
+  
+
+
+  
+  
           <p class="currentMonth">APRIL 2023</p>
           <div class="buttons">
-            <button id="prev"><</button>
-            <button id="next">></button>
           </div>
         </header>
         <div class="calendar-days">
@@ -70,42 +91,10 @@
             <li>29</li>
             <li>30</li>
             <li>31</li>
-          </ul>
-        
-        </div>
-            
-
-        </div>
-      </div>
-      
-    </body>
-  </html>
-        
-<script src="Calscript.js"></script>
-</body>
-</html>
-
-
-<!-- </head>
-<body>
-<div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
-    <div class="card">
-        <h3 class="card-header" id="monthAndYear"></h3>
-        <table class="table table-bordered table-responsive-sm" id="calendar">
-            
-
-            <tbody id="calendar-body">
-
-            </tbody>
-        </table>
-
-        <div class="form-inline">
-
-            <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
-
-            <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
+          </ul>      
         </div>
         <br/>
+        <!-- Mini Calendar view -->
         <form class="form-inline">
             <label class="lead mr-2 ml-2" for="month">Jump To: </label>
             <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
@@ -134,10 +123,16 @@
             <option value=2029>2029</option>
             <option value=2030>2030</option>
         </select></form>
-    </div>
 </div>
 <button name="jump" onclick="jump()">Go</button>
-<script src="Calscripts.js"></script>
+  
 
+        </div>
+      </div>
+      
+    </body>
+  </html>
+        
+<script src="Calscript.js"></script>
 </body>
-</html> -->
+</html>
