@@ -4,6 +4,7 @@ grid-template-rows:    repeat(5, 100px);
 grid-template-columns: repeat(7, 1fr);
 gap: 50px 100px;
 }
+<<<<<<< HEAD
 
 #style="border:1px solid black"
 body > #head-container > .logo > img {
@@ -19,6 +20,12 @@ body {
     display: flex;
 }
 
+=======
+.vac-info{
+    color: rgb(217, 137, 17);
+}
+/* 
+>>>>>>> upstream/main
 #head-container{
     background-color: rgb(67, 65, 65)
 }
