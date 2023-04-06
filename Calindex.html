@@ -11,15 +11,40 @@
 <body style="border-width: thick;">
     <div style="border:1px solid black" id="head-container">
         <div class="logo">
+<<<<<<< HEAD
             <img src="images/VacayHubLogo.jpg">
+=======
+            <img src="./images/VacayHubLogo.jpg">
+>>>>>>> upstream/main
         </div>
     </div>   
     <div style="border:7px solid orange" class="calendar">
         <header>
-          <p class="current-date">APRIL 2023</p>
+          <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+            <h3 class="card-header" id="monthAndYear"></h3>
+            <table class="table table-bordered table-responsive-sm" id="calendar">
+                
+    
+                <tbody id="calendar-body">
+    
+                </tbody>
+            </table>
+    
+            <div class="form-inline">
+    
+                <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">&lt;&lt; Previous</button>
+    
+                <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next&gt;&gt;</button>
+            </div>
+            <br/>
+    
+  
+
+
+  
+  
+          <p class="currentMonth">APRIL 2023</p>
           <div class="buttons">
-            <button id="prev"><</button>
-            <button id="next">></button>
           </div>
         </header>
         <div class="calendar-days">
@@ -70,10 +95,41 @@
             <li>29</li>
             <li>30</li>
             <li>31</li>
-          </ul>
-        
+          </ul>      
         </div>
-            
+        <br/>
+        <!-- Mini Calendar view -->
+        <form class="form-inline">
+            <label class="lead mr-2 ml-2" for="month">Jump To: </label>
+            <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
+                <option value=0>Jan</option>
+                <option value=1>Feb</option>
+                <option value=2>Mar</option>
+                <option value=3>Apr</option>
+                <option value=4>May</option>
+                <option value=5>Jun</option>
+                <option value=6>Jul</option>
+                <option value=7>Aug</option>
+                <option value=8>Sep</option>
+                <option value=9>Oct</option>
+                <option value=10>Nov</option>
+                <option value=11>Dec</option>
+            </select>
+
+
+            <label for="year"></label><select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
+            <option value=2023>2023</option>
+            <option value=2024>2024</option>
+            <option value=2025>2025</option>
+            <option value=2026>2026</option>
+            <option value=2027>2027</option>
+            <option value=2028>2028</option>
+            <option value=2029>2029</option>
+            <option value=2030>2030</option>
+        </select></form>
+</div>
+<button name="jump" onclick="jump()">Go</button>
+  
 
         </div>
       </div>
@@ -81,7 +137,6 @@
     </body>
   </html>
         
-
 <script src="Calscript.js"></script>
 </body>
 </html>
