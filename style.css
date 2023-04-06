@@ -3,7 +3,7 @@ body{
     padding: 0px;
   }
 
-.api-data{
+.weather-box{
   display: flex;
   justify-content: space-around;
 }
