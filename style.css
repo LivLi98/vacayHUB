@@ -110,3 +110,69 @@ label {
   .changing-images img:nth-of-type(4) {
     animation-delay: 0;
   }  
+
+
+  .event-item {
+    display: flex;
+    margin-top: 1%;
+    margin-left: 1%;
+    
+    font: 1rem 'Rubik', sans-serif;
+    
+}
+  
+  .event-time{
+    margin-left: 1%;
+    font: 1rem 'Rubik', sans-serif;
+  }
+
+  .event-desc {
+    margin-left: 1% ;
+    font-weight: bold;
+    font: 1rem 'Rubik', sans-serif;
+  }
+
+  .weath-date {
+    font: 1rem 'Rubik', sans-serif;
+  }
+
+  .weath-high {
+    font: 1rem 'Rubik', sans-serif;
+  }
+
+  .weath-low {
+    font: 1rem 'Rubik', sans-serif;
+    
+  }
+
+  .weather {
+    margin-top: 3%;
+    margin-bottom: 5%;
+  }
+
+  footer {
+    display: flex;
+    align-items: end;
+    
+  }
+
+  .header-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .cButton {
+    background-color: rgb(232, 153, 16);
+    margin-bottom: 4%;
+    font-weight: 800;
+    font: 1rem 'Rubik', sans-serif;
+    border-radius: 13px;
+  }
+
+  .tButton {
+    background-color: rgb(232, 153, 16);
+    font-weight: 800;
+    font:  1rem 'Rubik', sans-serif;
+    border-radius: 13px;
+  }
