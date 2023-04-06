@@ -4,7 +4,9 @@ grid-template-rows:    repeat(5, 100px);
 grid-template-columns: repeat(7, 1fr);
 gap: 50px 100px;
 }
-
+.vac-info{
+    color: rgb(217, 137, 17);
+}
 /* 
 #head-container{
     background-color: rgb(67, 65, 65)
