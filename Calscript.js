@@ -9,7 +9,6 @@ for(x=1;x<=mDays;x++){
     dayBox.innerHTML+=`<div class="day">${x}</div>`
 }
 
-<<<<<<< HEAD
 function previous() {
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
@@ -99,5 +98,3 @@ function showCalendar(month, year) {
 
 
 
-=======
->>>>>>> upstream/main
