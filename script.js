@@ -3,7 +3,7 @@
 
 let eventContainer = document.getElementsByClassName(".api-data");
 			                
-let url = 'http://api.weatherapi.com/v1';
+let url = 'https://api.weatherapi.com/v1';
 let apiKey ='?key=c021b43ef7ef412eac6134345233003&q=';
 
 let numVacationDays=0;
@@ -58,11 +58,11 @@ let buildHTML=(vacObj,num)=>{
     vacObj.forEach(vac=>{
         if(count>0){
             tripWeather.innerHTML+=`
-            <div>
-                <div>${vac.date}</div>
+            <div class = "weather">
+                <div class = "weath-date">${vac.date}</div>
                 <img src="${vac.condition}">
-                <div>H: ${Math.floor(vac.high)}\xB0F</div>
-                <div>L: ${Math.floor(vac.low)}\xB0F</div>
+                <div class="weath-high">H: ${Math.floor(vac.high)}\xB0F</div>
+                <div class="weath-low">L: ${Math.floor(vac.low)}\xB0F</div>
             </div>`;
             vac.toDo.forEach(activity=>{
                 tripSug.innerHTML+=`
