@@ -71,7 +71,7 @@ let buildHTML=(vacObj,num)=>{
                     <div class='event-time'>${activity.time}</div>
                     <div class='event-desc'>${activity.description}</div>
                 </div>`;
-            })
+            }) 
         }
         count--;
     })
