@@ -32,10 +32,10 @@ let imageBox=document.querySelector('.changing-images');
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '877a5a72fcmsh2a871114e09a22ep1a5bf4jsnff157ccbd13b',
+		'X-RapidAPI-Key': '0542477634mshf97d81ac9d9bdb1p1f9696jsne97e133ffe26',
 		'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
 	}
-}
+};
 
 //takes the information from a fully built up array of day objects and innerhtml's
 //them onto the page
